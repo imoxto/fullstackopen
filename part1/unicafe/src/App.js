@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-const Button = ({ name, onClick }) => {
-  return <button onClick={onClick}>{name}</button>;
-};
-const StatisticLine = ({ name, val, unit }) => {
+const Button = ({ name, onClick }) => <button onClick={onClick}>{name}</button>;
+
+const StatisticLine = ({ name, val }) => {
   return (
     <tr>
       <td>{name}</td>
-      <td>{val + (unit ? unit : "")}</td>
+      <td>{val}</td>
     </tr>
   );
 };
@@ -24,7 +23,7 @@ const Statistics = ({ good, neutral, bad }) => {
             <StatisticLine name={"Bad"} val={bad} />
             <StatisticLine name={"All"} val={total} />
             <StatisticLine name={"Average"} val={(good - bad) / total} />
-            <StatisticLine name={"Positive"} val={(good * 100) / total} unit={"%"} />
+            <StatisticLine name={"Positive"} val={(good * 100) / total + "%"} />
           </tbody>
         </table>
       ) : (
